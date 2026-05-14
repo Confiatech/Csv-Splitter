@@ -1,5 +1,13 @@
 const LICENSE_KEY = 'csvstream_license';
 const IS_PRO_KEY = 'csvstream_is_pro';
+const DOWNLOAD_COUNT_KEY = 'csvstream_download_count';
+
+/** How many free downloads a non-Pro user gets. */
+export const FREE_DOWNLOAD_LIMIT = 1;
+
+export const FREE_TIER_LIMIT_MB = 50;
+
+// ─── License storage ────────────────────────────────────────────────────────
 
 export function getStoredLicense(): string | null {
   return localStorage.getItem(LICENSE_KEY);
@@ -18,6 +26,30 @@ export function clearLicense(): void {
   localStorage.removeItem(LICENSE_KEY);
   localStorage.removeItem(IS_PRO_KEY);
 }
+
+// ─── Download counter ────────────────────────────────────────────────────────
+
+/** Returns how many downloads the free user has already used. */
+export function getFreeDownloadCount(): number {
+  return parseInt(localStorage.getItem(DOWNLOAD_COUNT_KEY) ?? '0', 10);
+}
+
+/** Increments the free download counter by 1. */
+export function incrementFreeDownloadCount(): void {
+  const current = getFreeDownloadCount();
+  localStorage.setItem(DOWNLOAD_COUNT_KEY, String(current + 1));
+}
+
+/**
+ * Returns true if the user is allowed to perform a download right now.
+ * Pro users always pass. Free users are limited to FREE_DOWNLOAD_LIMIT.
+ */
+export function canDownload(isPro: boolean): boolean {
+  if (isPro) return true;
+  return getFreeDownloadCount() < FREE_DOWNLOAD_LIMIT;
+}
+
+// ─── File-size gate ──────────────────────────────────────────────────────────
 
 /**
  * Validates a license key against Gumroad API.
@@ -39,8 +71,6 @@ export async function validateLicense(key: string): Promise<boolean> {
     return false;
   }
 }
-
-export const FREE_TIER_LIMIT_MB = 50;
 
 export function canProcessFile(fileSizeMB: number, isPro: boolean): boolean {
   if (isPro) return true;
