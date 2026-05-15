@@ -1,8 +1,9 @@
 const LICENSE_KEY = 'csvstream_license';
 const IS_PRO_KEY = 'csvstream_is_pro';
 const DOWNLOAD_COUNT_KEY = 'csvstream_download_count';
+const DOWNLOAD_DATE_KEY  = 'csvstream_download_date';
 
-/** How many free downloads a non-Pro user gets. */
+/** How many free downloads a non-Pro user gets per day. */
 export const FREE_DOWNLOAD_LIMIT = 1;
 
 export const FREE_TIER_LIMIT_MB = 50;
@@ -27,22 +28,39 @@ export function clearLicense(): void {
   localStorage.removeItem(IS_PRO_KEY);
 }
 
-// ─── Download counter ────────────────────────────────────────────────────────
+// ─── Download counter (resets daily) ────────────────────────────────────────
 
-/** Returns how many downloads the free user has already used. */
+/** Returns today's date as a YYYY-MM-DD string. */
+function today(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/**
+ * Resets the counter if the stored date is not today,
+ * then returns how many downloads have been used today.
+ */
 export function getFreeDownloadCount(): number {
+  const storedDate = localStorage.getItem(DOWNLOAD_DATE_KEY);
+  if (storedDate !== today()) {
+    // New day — reset counter
+    localStorage.setItem(DOWNLOAD_DATE_KEY, today());
+    localStorage.setItem(DOWNLOAD_COUNT_KEY, '0');
+    return 0;
+  }
   return parseInt(localStorage.getItem(DOWNLOAD_COUNT_KEY) ?? '0', 10);
 }
 
-/** Increments the free download counter by 1. */
+/** Increments today's download counter by 1. */
 export function incrementFreeDownloadCount(): void {
+  // Ensure date is current before incrementing
   const current = getFreeDownloadCount();
+  localStorage.setItem(DOWNLOAD_DATE_KEY, today());
   localStorage.setItem(DOWNLOAD_COUNT_KEY, String(current + 1));
 }
 
 /**
  * Returns true if the user is allowed to perform a download right now.
- * Pro users always pass. Free users are limited to FREE_DOWNLOAD_LIMIT.
+ * Pro users always pass. Free users get FREE_DOWNLOAD_LIMIT per day.
  */
 export function canDownload(isPro: boolean): boolean {
   if (isPro) return true;
