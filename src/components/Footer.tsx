@@ -6,20 +6,14 @@ export function Footer() {
             style={{ background: 'rgba(5, 3, 20, 0.6)', backdropFilter: 'blur(12px)' }}>
       <div className="max-w-5xl mx-auto px-5 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
 
-        {/* Logo */}
+        {/* Built by */}
         <a
           href="https://confiatech.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 group"
-          aria-label="Confiatech"
+          className="text-xs text-white/30 hover:text-white/60 transition-colors"
         >
-          <span className="text-xs text-white/30 group-hover:text-white/50 transition-colors">Built by</span>
-          <img
-            src="https://confiatech.com/assets/images/logo-white.png"
-            alt="Confiatech"
-            className="h-5 w-auto opacity-60 group-hover:opacity-90 transition-opacity"
-          />
+          Built by <span className="text-white/50 font-semibold">ConfiaTech</span>
         </a>
 
         {/* Center — privacy badge */}
