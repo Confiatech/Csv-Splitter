@@ -1,0 +1,10 @@
+services:
+  csv-splitter-fe:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3200:3200"
+    image: csv-splitter-fe:latest
+    container_name: csv-splitter-fe
+    restart: unless-stopped
