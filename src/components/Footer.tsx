@@ -13,7 +13,7 @@ export function Footer() {
           rel="noopener noreferrer"
           className="text-xs text-white/30 hover:text-white/60 transition-colors"
         >
-          Built by <span className="text-white/50 font-semibold">ConfiaTech.</span>
+          Built by <span className="text-white/50 font-semibold">ConfiaTech</span>
         </a>
 
         {/* Center — privacy badge */}
