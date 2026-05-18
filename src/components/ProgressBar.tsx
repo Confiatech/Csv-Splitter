@@ -10,10 +10,9 @@ export function ProgressBar({ progress, label }: ProgressBarProps) {
     <div className="card px-5 py-4 space-y-3">
       <div className="flex items-center justify-between">
         {label && (
-          <div className="flex items-center gap-2 text-sm text-indigo-200/70">
-            {/* Spinner */}
+          <div className="flex items-center gap-2 text-sm text-slate-700">
             <svg
-              className="w-4 h-4 text-indigo-400 animate-spin"
+              className="w-4 h-4 text-[#3F7FBC] animate-spin"
               fill="none"
               viewBox="0 0 24 24"
             >
@@ -23,13 +22,12 @@ export function ProgressBar({ progress, label }: ProgressBarProps) {
             {label}
           </div>
         )}
-        <span className="text-sm font-semibold text-indigo-300 ml-auto">
+        <span className="text-sm font-semibold text-[#3F7FBC] ml-auto">
           {Math.round(pct)}%
         </span>
       </div>
 
-      {/* Track */}
-      <div className="w-full h-2 rounded-full bg-white/8 overflow-hidden">
+      <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
         <div
           className="h-full rounded-full progress-shimmer transition-all duration-300 ease-out"
           style={{ width: `${pct}%` }}

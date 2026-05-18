@@ -1,0 +1,25 @@
+# CSV Splitter
+
+> Free, browser-based tool that splits large CSV files into smaller chunks by row count or file size. All processing runs locally — files are never uploaded to a server.
+
+## What it does
+
+- Splits CSV, TSV, and TXT files in the browser using Web Workers (Papa Parse).
+- Two modes: split by row count, or split by approximate file size (MB per chunk).
+- Auto-detects common delimiters (comma, tab, semicolon, pipe) and lets you override manually.
+- Repeats the header row in every chunk so each output file is a valid, self-contained CSV.
+- Bundles all chunks into a single ZIP and downloads instantly via JSZip + file-saver.
+
+## Privacy
+
+- 100% client-side. No file is uploaded, no server is contacted during splitting.
+- No account, no signup, no tracking pixels in the core tool.
+
+## Pricing
+
+- Fully free. There is no Pro tier, no daily download limit, no file-size paywall.
+- A "Buy me a coffee" tip jar is offered for users who want to support development. It is optional.
+
+## Maintainer
+
+- Built by ConfiaTech — https://confiatech.com

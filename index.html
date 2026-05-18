@@ -2,12 +2,117 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSV Stream — Split large CSV files privately</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#3F7FBC" />
+    <meta name="color-scheme" content="light" />
+
+    <title>CSV Splitter — Split Large CSV Files Online, Free & Private</title>
+    <meta name="description" content="Split large CSV files into smaller chunks by row count or file size — instantly, free, and 100% private. All processing runs in your browser. No uploads. No signup." />
+    <meta name="keywords" content="csv splitter, split csv, divide csv, csv chunk, large csv file, csv tool, free csv splitter, online csv splitter, browser csv splitter, csv to zip" />
+    <meta name="author" content="ConfiaTech" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://csvsplitter.confiatech.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://csvsplitter.confiatech.com/" />
+    <meta property="og:title" content="CSV Splitter — Split Large CSV Files Online, Free & Private" />
+    <meta property="og:description" content="Free browser-based tool to split large CSV files by rows or file size. 100% private. No uploads, no signup, no limits." />
+    <meta property="og:image" content="https://csvsplitter.confiatech.com/logo.png" />
+    <meta property="og:site_name" content="CSV Splitter" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSV Splitter — Split Large CSV Files Online" />
+    <meta name="twitter:description" content="Free browser-based CSV splitter. Split by rows or size. 100% private — files never leave your browser." />
+    <meta name="twitter:image" content="https://csvsplitter.confiatech.com/logo.png" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <!-- Perf hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/logo.png" fetchpriority="high" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Structured data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CSV Splitter",
+      "url": "https://csvsplitter.confiatech.com/",
+      "description": "Free browser-based tool that splits large CSV files into smaller chunks by row count or file size. 100% private — no uploads, no servers, no signup.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires a modern browser with JavaScript enabled",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": [
+        "Split by row count",
+        "Split by file size",
+        "Auto-detect delimiter (comma, tab, semicolon, pipe)",
+        "Preserve headers in every split file",
+        "Download all chunks as a single ZIP",
+        "100% in-browser processing — files never uploaded"
+      ],
+      "publisher": { "@type": "Organization", "name": "ConfiaTech", "url": "https://confiatech.com" }
+    }
+    </script>
+
+    <!-- Structured data: FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is the CSV splitter really free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tool is fully free with no signup and no daily limit. If you find it useful, you can buy us a coffee — but it is never required." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my files uploaded to a server?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. All CSV parsing and splitting runs locally in your browser using Web Workers. Your data never leaves your device." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the maximum file size?",
+          "acceptedAnswer": { "@type": "Answer", "text": "There is no hard limit. Processing speed depends on your device's memory and CPU. Most modern laptops handle files of several hundred megabytes without issue." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I split by file size instead of row count?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Choose 'By size' and set a target megabytes-per-file. The splitter packs rows until each chunk reaches that size." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does every split file keep the header row?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, by default. Toggle 'Include header in every file' off if you want the header only in the first chunk." }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured data: HowTo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to split a large CSV file online",
+      "step": [
+        { "@type": "HowToStep", "name": "Drop your CSV", "text": "Drag and drop a CSV, TSV, or TXT file, or click to browse." },
+        { "@type": "HowToStep", "name": "Configure the split", "text": "Choose split by row count or file size, pick a delimiter, and toggle header repetition." },
+        { "@type": "HowToStep", "name": "Download the ZIP", "text": "Click Split & Download. All chunks are bundled into a ZIP archive that downloads instantly." }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>This tool requires JavaScript to run in your browser. Please enable JavaScript to split CSV files.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
